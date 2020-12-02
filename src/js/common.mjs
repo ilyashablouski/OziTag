@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 /**
  * Choose element function
  * @param {HTMLElement} element
@@ -6,10 +7,24 @@
 
 const selectElement = (element) => document.querySelector(element);
 
+
 document.addEventListener('DOMContentLoaded', () => {
-  // Click event for mobile-menu
-  selectElement('.menu-btn').addEventListener('click', () => {
+  // Mouse up events for mobile-menu
+  selectElement('.menu-btn').addEventListener('mouseup', () => {
     selectElement('.header').classList.toggle('is-active');
-    // console.log('click');
+    document.body.classList.toggle('is-no-scrollbar');
+  });
+
+  selectElement('.menu').addEventListener('mouseup', (event) => {
+    const target = event.target;
+    if (target.classList.contains('arrow-btn')) {
+      const menuElements = document.
+
+        target.parentElement.querySelector('.menu__group')
+        .classList.toggle('is-open');
+
+      target.classList.toggle('is-rotate');
+      // console.log('');
+    }
   });
 });
