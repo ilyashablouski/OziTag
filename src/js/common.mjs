@@ -9,7 +9,10 @@ const selectElement = (element) => document.querySelector(element);
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Mouse up events for mobile-menu
+  /**
+   * Mouse up events for mobile-menu
+   *
+  */
   selectElement('.menu-btn').addEventListener('mouseup', () => {
     selectElement('.header').classList.toggle('is-active');
     document.body.classList.toggle('is-no-scrollbar');
@@ -27,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
       // Reset opened menu elements and rerotated arrows
       menuElements.forEach((element) => {
         element.classList.remove('is-open');
-
         element.previousElementSibling.classList.remove('is-rotate');
       });
 
@@ -36,7 +38,16 @@ document.addEventListener('DOMContentLoaded', () => {
         .classList.add('is-open');
       // Rotate arrow
       target.classList.add('is-rotate');
-    } else {
+
+
+      // Scroll into view
+      const menuElement = target.closest('.menu__item');
+      menuElement.scrollIntoView({
+        block: 'start', behavior: 'smooth',
+      });
+      // ----------------------------------------------------------------
+    } else if (target.matches('.arrow-btn') &&
+      target.nextElementSibling.matches('.is-open')) {
       // Open clicked menu item
       target.parentElement.querySelector('.menu__group')
         .classList.remove('is-open');
@@ -44,4 +55,21 @@ document.addEventListener('DOMContentLoaded', () => {
       target.classList.remove('is-rotate');
     }
   });
+
+  /**
+   * Mouseenter/Mouseleave events for menu
+   *
+   */
+
+  if (document.documentElement.clientWidth >= 768) {
+    selectElement('.menu')
+      .addEventListener('mouseenter', () => {
+        document.body.classList.add('is-no-scrollbar');
+      });
+
+    selectElement('.menu__list-mobile')
+      .addEventListener('mouseleave', () => {
+        document.body.classList.remove('is-no-scrollbar');
+      });
+  }
 });

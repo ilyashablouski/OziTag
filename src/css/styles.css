@@ -161,10 +161,12 @@ body {
   font-weight: 500;
   background: #fff;
   color: #000000;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
-.is-no-scrollbar {
-  overflow: hidden;
+body.is-no-scrollbar {
+  background: rgba(0, 0, 0, 0.7);
 }
 
 img {
@@ -239,6 +241,7 @@ a:not(.button):hover {
   background: #ffffff;
   -webkit-box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.2);
           box-shadow: 0px 0px 3px 1px rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(66, 66, 69, 0.1);
   z-index: 2;
   -webkit-transition: 0.3s;
   transition: 0.3s;
@@ -297,9 +300,9 @@ a:not(.button):hover {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background: #f1f1f1;
-  -webkit-box-shadow: inset 0px 0px 3px 1px rgba(0, 0, 0, 0.2);
-          box-shadow: inset 0px 0px 3px 1px rgba(0, 0, 0, 0.2);
+  background: #f8f8f8;
+  -webkit-box-shadow: inset 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
+          box-shadow: inset 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
   opacity: 0;
   visibility: hidden;
   height: 0;
@@ -371,7 +374,7 @@ a:not(.button):hover {
   opacity: 1;
 }
 
-.menu__link:hover:after {
+.menu__item:hover .menu__link:after {
   width: 100%;
 }
 
@@ -456,13 +459,8 @@ a:not(.button):hover {
   transition: transform 0.3192s 0.1s cubic-bezier(0.04, 0.04, 0.12, 0.96), -webkit-transform 0.3192s 0.1s cubic-bezier(0.04, 0.04, 0.12, 0.96);
 }
 
-.header.is-active {
-  height: 100vh;
-  overflow: hidden;
-}
-
 .is-active .menu__list-mobile {
-  width: 100%;
+  left: 15px;
   opacity: 1;
   visibility: visible;
 }
@@ -499,7 +497,7 @@ a:not(.button):hover {
 }
 
 @media screen and (min-width: 768px) {
-  .menu__link:hover ~ .menu__dropdown {
+  .menu__item:hover .menu__dropdown {
     height: auto;
     opacity: 1;
     visibility: visible;
@@ -530,6 +528,10 @@ a:not(.button):hover {
 }
 
 @media screen and (max-width: 767.98px) {
+  body.is-no-scrollbar {
+    overflow: hidden;
+  }
+
   .header__content {
     border-bottom: 1px solid rgba(66, 66, 69, 0.2);
   }
@@ -537,9 +539,11 @@ a:not(.button):hover {
   .menu__list-mobile {
     position: fixed;
     top: 83px;
-    left: 15px;
-    width: 0;
-    height: 0;
+    left: 105%;
+    padding-bottom: 15px;
+    width: 100%;
+    height: auto;
+    max-height: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -548,8 +552,12 @@ a:not(.button):hover {
     font-size: 18px;
     visibility: hidden;
     opacity: 0;
-    -webkit-transition: opacity 0.3s;
-    transition: opacity 0.3s;
+    background: #ffffff;
+    -webkit-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
+            box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
   }
 
   .menu__list-mobile .menu__first-item {
