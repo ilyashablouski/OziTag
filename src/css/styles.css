@@ -368,12 +368,6 @@ a:not(.button):hover {
   height: auto;
 }
 
-.menu__group.is-open > ul > li,
-.menu__group.is-open > li {
-  display: block;
-  opacity: 1;
-}
-
 .menu__item:hover .menu__link:after {
   width: 100%;
 }
@@ -651,54 +645,11 @@ a:not(.button):hover {
   }
 
   .menu__group {
-    display: none;
+    visibility: hidden;
     opacity: 1;
-  }
-
-  .menu__group {
-    -webkit-animation: rotateMenu 400ms ease-in-out forwards;
-            animation: rotateMenu 400ms ease-in-out forwards;
-    -webkit-transform-origin: top center;
-            transform-origin: top center;
-  }
-
-@-webkit-keyframes rotateMenu {
-    0% {
-      -webkit-transform: rotateX(-90deg);
-              transform: rotateX(-90deg);
-    }
-
-    70% {
-      -webkit-transform: rotateX(20deg);
-              transform: rotateX(20deg);
-    }
-
-    100% {
-      -webkit-transform: rotateX(0deg);
-              transform: rotateX(0deg);
-    }
-}
-
-@keyframes rotateMenu {
-    0% {
-      -webkit-transform: rotateX(-90deg);
-              transform: rotateX(-90deg);
-    }
-
-    70% {
-      -webkit-transform: rotateX(20deg);
-              transform: rotateX(20deg);
-    }
-
-    100% {
-      -webkit-transform: rotateX(0deg);
-              transform: rotateX(0deg);
-    }
-}
-
-  .menu__group li {
-    display: none;
-    opacity: 0;
+    height: 0;
+    -webkit-transition: 0s;
+    transition: 0s;
   }
 
   .menu-btn {

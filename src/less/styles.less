@@ -350,33 +350,11 @@ a:not(.button):hover {
 
 .menu__group {
   .sm-block({ 
-    display: none;
+    visibility: hidden;
     opacity: 1;
+    height: 0;
+    transition: 0s;
   });
-
-  .sm-block({
-    animation: rotateMenu 400ms ease-in-out forwards;
-    transform-origin: top center;
-  
-    @keyframes rotateMenu {
-      0% {
-        transform: rotateX(-90deg);
-      }
-      70% {
-        transform: rotateX(20deg);
-      }
-      100% {
-        transform: rotateX(0deg);
-      }
-    }
-  });
-
-  li {
-    .sm-block({
-      display: none;
-      opacity: 0;
-    });
-  }
 }
 
 .menu__group.is-open {
@@ -385,11 +363,11 @@ a:not(.button):hover {
   height: auto;
 }
 
-.menu__group.is-open > ul > li,
-.menu__group.is-open > li {
-  display: block;
-  opacity: 1;
-}
+// .menu__group.is-open > ul > li,
+// .menu__group.is-open > li {
+//   display: block;
+//   opacity: 1;
+// }
 
 .menu__item:hover .menu__link:after {
   width: 100%;
